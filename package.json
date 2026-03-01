@@ -1,0 +1,34 @@
+{
+    "name": "doc-access",
+    "version": "1.0.0",
+    "description": "A JS/TS module that reduces coding time spent on accessibility.",
+    "license": "Apache-2.0",
+    "author": "Placewith5s",
+    "keywords": [
+        "accessibility",
+        "browser",
+        "front-end",
+        "js",
+        "javascript",
+        "ts",
+        "typescript"
+    ],
+    "type": "module",
+    "main": "dist/doc_access.js",
+    "types": "dist/doc_access.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/doc_access.d.ts",
+            "browser": "./dist/doc_access.js",
+            "default": "./dist/doc_access.js",
+            "import": "./dist/doc_access.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "typescript": "^5.9.3"
+    }
+}
