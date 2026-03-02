@@ -1,6 +1,6 @@
 {
     "name": "doc-access",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A JS/TS module that reduces coding time spent on accessibility.",
     "license": "Apache-2.0",
     "author": "Placewith5s",
@@ -23,6 +23,13 @@
             "default": "./dist/doc_access.js",
             "import": "./dist/doc_access.js"
         }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Placewith5s/doc-access.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Placewith5s/doc-access/issues"
     },
     "scripts": {
         "build": "tsc",

@@ -1,4 +1,4 @@
-import { check_inv_html_elem, err_msg_finisher } from './doc-access-extra';
+import { check_inv_html_elem, err_msg_finisher } from './doc-access-extra.js';
 class Detacher {
     parent;
     err_msg;
