@@ -16,7 +16,7 @@ const main_elem = document.body.querySelector('main');
 
 const section = new Accessible_Section(
     "h2", // heading choice
-    main_elem,
+    main_elem, // section parent
     "Introduction"); // heading text
 
 const link = new Tab_Link(section.self,
@@ -27,15 +27,18 @@ const link = new Tab_Link(section.self,
 link.self.href = "https://example.com";
 
 const p = new Elem(
-    "p", 
-    section.self
+    "p", // can be any tag name
+    section.self // creation parent
     // optional id
 );
 p.self.textContent = "Hey there!";
 
-grouped_sections_accessible(".intro", "h2");
+grouped_sections_accessible(
+    ".intro", // class name
+    "h2" // heading choice
+);
 
-// access any heading with #id
+// access any heading under parent using its #id
 all_headings_nav_friendly(main_elem);
 
 const same_tab_link = new Elem("a", main_elem);
@@ -54,6 +57,10 @@ new_tab_existing(same_tab_link);
 new Accessible_Section();
 new Tab_Link();
 new Elem();
+
+// class methods
+attach();
+detach();
 ```
 
 ### Functions
