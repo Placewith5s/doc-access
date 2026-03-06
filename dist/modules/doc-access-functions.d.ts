@@ -1,4 +1,4 @@
-import { Heading_Choice } from './doc-access-classes';
+import { Heading_Choice } from "./doc-access-classes";
 /** Makes existing grouped sections containing the describer heading WCAG friendly (omitting contrast)
  *
  * WARNING: Replaces both the section and heading ID

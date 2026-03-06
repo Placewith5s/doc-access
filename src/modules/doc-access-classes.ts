@@ -1,22 +1,26 @@
 import {
     check_inv_html_elem,
     err_msg_finisher
-} from './doc-access-extra';
+} from "./doc-access-extra";
 
-export type Heading_Choice = "h2" | "h3" | "h4" | "h5" | "h6";
-
+export type Heading_Choice =
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
 
 class Detacher {
     parent: HTMLElement;
     err_msg: string;
-    
-    constructor (parent: HTMLElement, err_msg: string) {
+
+    constructor(parent: HTMLElement, err_msg: string) {
         this.parent = parent;
         this.err_msg = err_msg;
     }
 
     /** Removes parent node, removing its children in the process
-     * 
+     *
      * @returns {void}
      */
     detach(): void {
@@ -38,11 +42,15 @@ export class Elem extends Detacher {
      * @param {HTMLElement} [parent] - Default: body
      * @param {string} [id]
      */
-    constructor (tag_name: keyof HTMLElementTagNameMap, parent?: HTMLElement,
+    constructor(
+        tag_name: keyof HTMLElementTagNameMap,
+        parent?: HTMLElement,
         id?: string
     ) {
-        super(parent || document.body,
-            err_msg_finisher("new creation", parent));
+        super(
+            parent || document.body,
+            err_msg_finisher("new creation", parent)
+        );
         this.self = null;
         this.tag_name = tag_name;
         this.parent = parent ?? document.body;
@@ -73,17 +81,24 @@ export class Accessible_Section extends Detacher {
      * @param {HTMLElement} [parent] - Default: body
      * @param {string} [heading_text]
      */
-    constructor (heading_choice: Heading_Choice,
-        parent?: HTMLElement, heading_text?: string) {
-        super(parent || document.body,
-            err_msg_finisher("new section", parent));
+    constructor(
+        heading_choice: Heading_Choice,
+        parent?: HTMLElement,
+        heading_text?: string
+    ) {
+        super(
+            parent || document.body,
+            err_msg_finisher("new section", parent)
+        );
 
         this.parent = parent ?? document.body;
 
         this.heading_choice = heading_choice;
 
         this.self = document.createElement("section");
-        this.heading = document.createElement(this.heading_choice);
+        this.heading = document.createElement(
+            this.heading_choice
+        );
 
         this.#heading_text = heading_text ?? "";
 
@@ -92,28 +107,36 @@ export class Accessible_Section extends Detacher {
     }
 
     /** Updates section to keep it accessible
-     * 
+     *
      * @returns {void}
      */
     #upd(value: string): void {
         this.#heading_text = value;
         this.heading.textContent = this.#heading_text;
 
-        const heading_text_copy: string = this.heading.textContent
-        .replaceAll(" ", "")
-        .toLowerCase() + "-heading";
+        const heading_text_copy: string =
+            this.heading.textContent
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, "") + "-heading";
 
         this.heading.id = heading_text_copy;
-        this.self.setAttribute("aria-labelledby", this.heading.id);
+        this.self.setAttribute(
+            "aria-labelledby",
+            this.heading.id
+        );
         // console.info("Updated heading text");
     }
 
     /** Parents both the section and heading
-     * 
+     *
      * @returns {void}
      */
     attach(): void {
-        check_inv_html_elem(this.parent, `Can't parent section - invalid parent! Parent: ${parent}`);
+        check_inv_html_elem(
+            this.parent,
+            `Can't parent section - invalid parent! Parent: ${parent}`
+        );
         this.parent.append(this.self);
         this.self.appendChild(this.heading);
         // console.info("Parented new section and heading");
@@ -146,11 +169,17 @@ export class Tab_Link extends Detacher {
      * @param {boolean} [secure] - Default: true
      * @param {boolean} [accessible] - Default: true
      */
-    constructor (parent?: HTMLElement,
-        secure?: boolean, accessible?: boolean, link_text?: string) {
-        super(parent || document.body,
-            err_msg_finisher("new link", parent));
-        
+    constructor(
+        parent?: HTMLElement,
+        secure?: boolean,
+        accessible?: boolean,
+        link_text?: string
+    ) {
+        super(
+            parent || document.body,
+            err_msg_finisher("new link", parent)
+        );
+
         this.self = document.createElement("a");
         this.parent = parent ?? document.body;
         this.secure = secure ?? true;
@@ -180,11 +209,14 @@ export class Tab_Link extends Detacher {
     }
 
     /** Parents the new tab link
-     * 
+     *
      * @returns {void}
      */
     attach(): void {
-        check_inv_html_elem(this.parent, `Can't parent new link - invalid parent! Parent: ${this.parent}`);
+        check_inv_html_elem(
+            this.parent,
+            `Can't parent new link - invalid parent! Parent: ${this.parent}`
+        );
         this.parent.append(this.self);
         // console.info("Parented new tab link");
     }

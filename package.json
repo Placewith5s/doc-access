@@ -1,6 +1,6 @@
 {
     "name": "doc-access",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A JS/TS module that reduces coding time spent on accessibility.",
     "license": "Apache-2.0",
     "author": "Placewith5s",

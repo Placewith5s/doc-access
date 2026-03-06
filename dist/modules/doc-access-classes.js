@@ -1,4 +1,4 @@
-import { check_inv_html_elem, err_msg_finisher } from './doc-access-extra.js';
+import { check_inv_html_elem, err_msg_finisher } from "./doc-access-extra.js";
 class Detacher {
     parent;
     err_msg;
@@ -76,8 +76,9 @@ export class Accessible_Section extends Detacher {
         this.#heading_text = value;
         this.heading.textContent = this.#heading_text;
         const heading_text_copy = this.heading.textContent
-            .replaceAll(" ", "")
-            .toLowerCase() + "-heading";
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, "") + "-heading";
         this.heading.id = heading_text_copy;
         this.self.setAttribute("aria-labelledby", this.heading.id);
         // console.info("Updated heading text");

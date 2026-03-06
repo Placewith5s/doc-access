@@ -5,7 +5,10 @@
  * @throws - If provided HTML element is invalid
  * @returns {void}
  */
-export const check_inv_html_elem = (html_elem: HTMLElement | undefined | null, msg: string): void => {
+export const check_inv_html_elem = (
+    html_elem: HTMLElement | undefined | null,
+    msg: string
+): void => {
     if (!html_elem) throw new Error(msg);
 };
 
@@ -15,6 +18,9 @@ export const check_inv_html_elem = (html_elem: HTMLElement | undefined | null, m
  * @param [parent]
  * @returns {string}
  */
-export const err_msg_finisher = (what: string, parent?: HTMLElement): string => {
+export const err_msg_finisher = (
+    what: string,
+    parent?: HTMLElement
+): string => {
     return `Can't parent ${what} - invalid parent! Parent: ${parent || document.body}`;
 };
