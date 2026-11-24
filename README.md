@@ -1,4 +1,7 @@
 # Doc Access
+> [!NOTE]
+> Will not update
+
 A JS/TS module that reduces coding time spent on accessibility.
 
 ## Usage
